@@ -1,9 +1,11 @@
-const fs = require("fs");
+"use strict";
 
-const input = fs.readFileSync("inputs/1").toString();
-const parsed = input.split("\n").map((x) => parseInt(x));
+// ======
+// Part 1
+// ======
+const part1 = (input) => {
+  const parsed = parseInput(input);
 
-const p1 = () => {
   //   let largerThanPrevious = 0;
   //   for (let i = 0; i < parsed.length; i++) {
   //     console.log(
@@ -25,7 +27,11 @@ const p1 = () => {
   return largerThanPrevious;
 };
 
-const p2 = () => {
+// ======
+// Part 2
+// ======
+const part2 = (input) => {
+  const parsed = parseInput(input);
   const largerThanPrevious = parsed.reduce(
     (p, c, i, a) => p + Number(i > 2 && a[i] > a[i - 3]),
     0
@@ -34,5 +40,6 @@ const p2 = () => {
   return largerThanPrevious;
 };
 
-console.log("p1", p1());
-console.log("p2", p2());
+const parseInput = (input) => input.split("\n").map((x) => parseInt(x));
+
+module.exports = { part1, part2 };
