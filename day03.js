@@ -3,33 +3,32 @@
 // ======
 // Part 1
 // ======
-const part1 = (input) => {
-  const parsed = parseInput(input);
-  const bitsPerColumn = parsed[0].split("").map((_, i) => {
-    return parsed.map((val) => val[i]);
-  });
-
-  const gammaBits = [];
-  for (let i = 0; i < bitsPerColumn.length; i++) {
-    let ones = 0;
-    let zeroes = 0;
-    bitsPerColumn[i].forEach((bit) => (bit == "1" ? ones++ : zeroes++));
-    gammaBits[i] = ones > zeroes ? "1" : "0";
-  }
-
-  const epsilonBits = [];
-  for (let i = 0; i < bitsPerColumn.length; i++) {
-    let ones = 0;
-    let zeroes = 0;
-    bitsPerColumn[i].forEach((bit) => (bit == "1" ? ones++ : zeroes++));
-    epsilonBits[i] = ones < zeroes ? "1" : "0";
-  }
-
-  const gammaDecimal = parseInt(gammaBits.join(""), 2);
-  const epsilonDecimal = parseInt(epsilonBits.join(""), 2);
-
-  return gammaDecimal * epsilonDecimal;
-};
+const part1 = (input) =>
+  [0, 1]
+    .map((gammaEpsilon) =>
+      input
+        .split("\n")[0]
+        .split("")
+        .map((_, i) => input.split("\n").map((val) => val[i]))
+        .map(
+          (column) =>
+            column
+              .reduce(
+                ([ones, zeroes], bit) => [
+                  (bit == "1" && ++ones) || ones,
+                  (bit == "0" && ++zeroes) || zeroes,
+                ],
+                [0, 0]
+              )
+              .map((_, __, arr) =>
+                arr[1] > arr[0]
+                  ? gammaEpsilon - (gammaEpsilon * 2 - 1)
+                  : gammaEpsilon
+              )[0]
+        )
+    )
+    .map((bits) => parseInt(bits.join(""), 2))
+    .reduce((prev, curr) => prev * curr, 1);
 
 // ======
 // Part 2
