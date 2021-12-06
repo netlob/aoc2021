@@ -5,8 +5,8 @@
   "main": "index.js",
   "adventConfig": {
     "year": "2021",
-    "nameTemplate": "day{{num}}.js",
-    "templateFile": "node_modules/advent-of-code/src/templates/day.js"
+    "nameTemplate": "day{{num}}.ts",
+    "templateFile": "template.ts"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
