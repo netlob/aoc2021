@@ -8,7 +8,7 @@ const part1 = (input) => {
   const fishes = parseInput(input);
 
   let days = 80;
-  let makingFishes = [0];
+  let makingFishes = new Array(8).fill(0);
   fishes.forEach((f) => (makingFishes[f] = makingFishes[f] + 1 || 1));
   let total = 0;
   for (let i = 0; i < days; i++) {

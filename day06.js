@@ -6,7 +6,7 @@ var part1 = function (input) {
     console.time("part1");
     var fishes = parseInput(input);
     var days = 80;
-    var makingFishes = [0];
+    var makingFishes = new Array(8).fill(0);
     fishes.forEach(function (f) { return (makingFishes[f] = makingFishes[f] + 1 || 1); });
     var total = 0;
     for (var i = 0; i < days; i++) {

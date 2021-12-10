@@ -5,7 +5,7 @@
   "main": "index.js",
   "adventConfig": {
     "year": "2021",
-    "nameTemplate": "day{{num}}.ts",
+    "nameTemplate": "day{{num}}.js",
     "templateFile": "template.ts"
   },
   "scripts": {
